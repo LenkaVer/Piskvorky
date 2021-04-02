@@ -39,6 +39,7 @@ h1 {
   letter-spacing: 1px;
   font-weight: normal;
   margin: 1.25rem;
+  text-align: center;
 }
 
 .text p {
@@ -136,3 +137,69 @@ h1 {
 }
 
 /*stylování stránky hra*/
+.herni-plocha {
+  max-width: 80vmin;
+  height: 100vh;
+  margin: 6.25rem auto;
+}
+
+.hraje {
+  text-transform: uppercase;
+}
+.herni-plocha__hlavicka-hry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ikony {
+  margin-bottom: 10px;
+}
+.ikony a {
+  display: inline-block;
+  margin: 5px;
+  width: 3.125rem;
+  height: 3.125rem;
+
+  text-align: center;
+}
+.ikony a img {
+  padding: 12px 8px;
+}
+.ikony__uvod {
+  background-color: #1fcca4;
+  border-radius: 8px;
+}
+.ikony__restart {
+  background-color: #0197f6;
+  border-radius: 8px;
+}
+
+.ikony__uvod:hover,
+.ikony__uvod:focus,
+.ikony__uvod:active {
+  background-color: #1cbb96;
+}
+
+.ikony__restart:hover,
+.ikony__domu:focus,
+.ikony__domu:active {
+  background-color: #0090e9;
+}
+
+.herni-plocha__policka {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80vmin;
+}
+button {
+  flex: 0 0 calc(100% / 10);
+  border: #283e50 solid 1px;
+  cursor: pointer;
+
+  opacity: 0.5;
+}
+
+button:hover,
+button:active {
+  opacity: 0.6;
+}

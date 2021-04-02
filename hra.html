@@ -21,13 +21,22 @@
     <header>
       <h1>Piškvorky</h1>
     </header>
-    <main>
-      <h2>
-        Hraje: <img class="ikony-herni" src="img/circle.svg" alt="kolecko" />
-      </h2>
-      <img class="ikony" src="img/home.svg" alt="home" />
-      <img class="ikony" src="img/restart.svg" alt="restart" />
-      <section class="policka">
+    <main class="herni-plocha">
+      <section class="herni-plocha__hlavicka-hry">
+        <h2 class="hraje">
+          Hraje: <img class="ikony-herni" src="img/circle.svg" alt="kolecko" />
+        </h2>
+        <div class="ikony">
+          <a class="ikony__uvod" href="index.html"
+            ><img src="img/home.svg" alt="home"
+          /></a>
+          <a class="ikony__restart" href="hra.html"
+            ><img src="img/restart.svg" alt="restart"
+          /></a>
+        </div>
+      </section>
+      <section class="herni-plocha__policka">
+        <!-- 100 políček -->
         <button></button><button></button><button></button><button></button
         ><button></button><button></button><button></button><button></button
         ><button></button><button></button><button></button><button></button
