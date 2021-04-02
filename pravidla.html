@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pravidla</title>
+    <link
+      rel="shortcut icon"
+      href="img/instructions-05.jpg"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -13,15 +18,16 @@
     />
   </head>
   <body>
-    <main class="popispravidel">
-      <h2>Pravidla</h2>
-      <ol class="seznampravidel">
+    <main class="pravidla">
+      <h2 class="pravidla__nadpis">Pravidla</h2>
+      <ol class="pravidla__seznam">
         <li>Hra piškvorky je určena pro dva hráče.</li>
         <li>Hraje se na hrací ploše 10×10, tvořené poli ve tvaru čtverce.</li>
         <li>
           Na začátku si hráči rozdělí role. Jeden bude hrát za kolečka
-          <img class="ikony" src="img/circle.svg" alt="kolecko" /> druhý bude
-          hrát za křížky <img class="ikony" src="img/cross.svg" alt="krizek" />.
+          <img class="ikony-herni" src="img/circle.svg" alt="kolecko" /> druhý
+          bude hrát za křížky
+          <img class="ikony-herni" src="img/cross.svg" alt="krizek" />.
         </li>
         <li>
           Losem se určí, kdo bude začínat. V naší aplikaci to vylosujeme za vás.
@@ -77,8 +83,8 @@
         </figure>
       </section>
       <section class="tlacitka">
-        <a class="zpetuvod" href="index.html">Úvodní stránka</a>
-        <a class="zacithrat" href="index.html">Začít hrát</a>
+        <a class="tlacitka__uvod" href="index.html">Úvodní stránka</a>
+        <a class="tlacitka__hrat" href="hra.html">Začít hrát</a>
       </section>
     </main>
   </body>

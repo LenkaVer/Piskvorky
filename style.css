@@ -19,11 +19,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.uvodnistrana {
+.uvodni-strana {
   text-align: center;
-  margin: 100px auto;
-  width: 400px;
-  height: 620px;
+  margin: 6.25rem auto;
+  max-width: 25rem;
+  max-height: 39rem;
   background-color: #283e50;
   border-radius: 6px 6px 0 0;
 }
@@ -38,11 +38,11 @@ h1 {
   font-size: 50px;
   letter-spacing: 1px;
   font-weight: normal;
-  margin: 20px;
+  margin: 1.25rem;
 }
 
 .text p {
-  margin: 0px 30px 30px 30px;
+  margin: 0px 1.875rem 1.875rem 1.875rem;
   font-size: 16px;
 }
 
@@ -50,44 +50,44 @@ h1 {
   display: block;
   text-decoration: none;
   color: white;
-  padding: 15px 0;
-  margin: 0px;
+  padding: 0.938rem 0;
+  margin: 0;
   text-align: center;
 }
 
-.pravidla {
+.tlacitka__pravidla {
   background-color: #1fcca4;
   border-bottom: #283e50 solid 1px;
 }
 
-.pravidla:hover {
+.tlacitka__pravidla:hover {
   background-color: #1cbb96;
 }
 
-.zacithrat {
+.tlacitka__hrat {
   background-color: #0197f6;
 }
 
-.zacithrat:hover {
+.tlacitka__hrat:hover {
   background-color: #0090e9;
 }
 
 /* stylování strany pravidel - verze úzká obrazovka*/
 
-.popispravidel {
-  margin: 20px auto;
-  max-width: 500px;
+.pravidla {
+  margin: 1.25rem auto;
+  max-width: 80vw;
   background-color: #283e50;
   border-radius: 6px 6px 0 0;
 }
 
-.seznampravidel li {
-  margin: 20px;
+.pravidla__seznam li {
+  margin: 1.25rem;
 }
 
-h2 {
-  margin: 30px;
-  padding-top: 20px;
+.pravidla__nadpis {
+  margin: 1.875rem;
+  padding-top: 1.25rem;
   text-align: center;
   font-family: 'Lobster', cursive;
   font-size: 40px;
@@ -104,29 +104,29 @@ h2 {
   text-align: center;
 }
 
-.ikony {
+.ikony-herni {
   filter: invert(100%);
   width: 1em;
   height: 1em;
 }
 
-.zpetuvod {
+.tlacitka__uvod {
   background-color: #1fcca4;
   border-bottom: #283e50 solid 1px;
 }
 
-.zpetuvod:hover {
+.tlacitka__uvod:hover {
   background-color: #1cbb96;
 }
 
 /*nastavení pro širokou obrazovku */
 @media (min-width: 540px) {
-  .popispravidel {
-    max-width: 800px;
+  .pravidla {
+    max-width: 50rem;
   }
   figure {
     width: calc((90%-30px) / 2);
-    margin: 10px;
+    margin: 0.625rem;
   }
   .priklady {
     display: flex;
@@ -134,3 +134,5 @@ h2 {
     justify-content: center;
   }
 }
+
+/*stylování stránky hra*/
