@@ -140,7 +140,7 @@ h1 {
 .herni-plocha {
   max-width: 80vmin;
   height: 100vh;
-  margin: 6.25rem auto;
+  margin: 3.25rem auto 6.25rem auto;
 }
 
 .hraje {
@@ -151,6 +151,13 @@ h1 {
   justify-content: space-between;
   align-items: center;
 }
+.ikony-herni-kolecko {
+  filter: invert(100%);
+  width: 1em;
+  height: 1em;
+  margin-bottom: -0.15rem;
+}
+
 .ikony {
   margin-bottom: 10px;
 }
