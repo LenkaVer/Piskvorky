@@ -105,10 +105,13 @@ h1 {
   text-align: center;
 }
 
-.ikony-herni {
+.ikony-herni-kolecko,
+.ikony-herni-krizek,
+.ikona-na-tahu {
   filter: invert(100%);
   width: 1em;
   height: 1em;
+  margin-bottom: -0.15rem;
 }
 
 .tlacitka__uvod {
@@ -150,12 +153,6 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.ikony-herni-kolecko {
-  filter: invert(100%);
-  width: 1em;
-  height: 1em;
-  margin-bottom: -0.15rem;
 }
 
 .ikony {
@@ -200,13 +197,39 @@ h1 {
 }
 button {
   flex: 0 0 calc(100% / 10);
+  height: calc(100% / 10);
   border: #283e50 solid 1px;
   cursor: pointer;
-
-  opacity: 0.5;
+  padding: 0;
+  background: rgba(238, 209, 252, 0.2);
 }
 
 button:hover,
 button:active {
-  opacity: 0.6;
+  background: rgba(236, 199, 255, 0.795);
+}
+
+/* stylování průběhu hry */
+button img {
+  height: 70%;
+  width: auto;
+  display: none;
+  margin: 0;
+  padding-left: 0.63rem;
+}
+
+.tlacitko--krizek .krizek,
+.tlacitko--kolecko .kolecko {
+  display: block;
+  animation-duration: 0.15s;
+  animation-name: pop;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.2);
+  }
+  100% {
+    transform: scale(1.2);
+  }
 }
