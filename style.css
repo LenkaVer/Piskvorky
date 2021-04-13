@@ -210,26 +210,51 @@ button:active {
 }
 
 /* stylování průběhu hry */
-button img {
+/* button img {
   height: 70%;
   width: auto;
   display: none;
   margin: 0;
-  padding-left: 0.63rem;
+} */
+
+.tlacitko--kolecko {
+  background-image: url(img/circle.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+  animation-duration: 0.2s;
+  animation-name: pop;
+}
+.tlacitko--kolecko:hover {
+  background-image: url(img/circle.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
 }
 
-.tlacitko--krizek .krizek,
-.tlacitko--kolecko .kolecko {
-  display: block;
+.tlacitko--krizek {
+  background-image: url(img/cross.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
   animation-duration: 0.15s;
   animation-name: pop;
 }
 
+.tlacitko--krizek:hover {
+  background-image: url(img/cross.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+}
+
 @keyframes pop {
   0% {
-    transform: scale(0.2);
+    transform: scale(0.3);
+    border: none;
   }
   100% {
-    transform: scale(1.2);
+    transform: scale(1);
+    border: none;
   }
 }
