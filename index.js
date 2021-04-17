@@ -28,3 +28,23 @@ const vypisTlacitko = (tlacitko) => {
   });
 };
 tlacitka.forEach(vypisTlacitko);
+
+// doplnění hry-výhra
+
+const herniPlocha = 10; // 10x10
+
+const ziskejPozici = (tlacitko) => {
+  let tlacitkoIndex = 0;
+  while (tlacitkoIndex < tlacitka.length) {
+    if (tlacitko === tlacitka[tlacitkoIndex]) {
+      break;
+    }
+    tlacitkoIndex++;
+  }
+
+  return {
+    row: Math.floor(tlacitkoIndex / herniPlocha),
+    column: tlacitkoIndex % herniPlocha,
+  };
+};
+console.log(ziskejPozici());

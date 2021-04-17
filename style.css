@@ -206,16 +206,10 @@ button {
 
 button:hover,
 button:active {
-  background: rgba(236, 199, 255, 0.795);
+  background-color: rgba(236, 199, 255, 0.795);
 }
 
 /* stylování průběhu hry */
-/* button img {
-  height: 70%;
-  width: auto;
-  display: none;
-  margin: 0;
-} */
 
 .tlacitko--kolecko {
   background-image: url(img/circle.svg);
@@ -225,12 +219,6 @@ button:active {
   animation-duration: 0.2s;
   animation-name: pop;
 }
-.tlacitko--kolecko:hover {
-  background-image: url(img/circle.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 70%;
-}
 
 .tlacitko--krizek {
   background-image: url(img/cross.svg);
@@ -239,13 +227,6 @@ button:active {
   background-size: 70%;
   animation-duration: 0.15s;
   animation-name: pop;
-}
-
-.tlacitko--krizek:hover {
-  background-image: url(img/cross.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 70%;
 }
 
 @keyframes pop {
