@@ -18,9 +18,9 @@ const vypisTlacitko = (tlacitko) => {
     }
 
     if (konecHry === 'kolecko' || konecHry === 'krizek') {
-      return alert('Hra skončila. Nezkoušej podvádět!');
+      return hratZnovu('Hra už skončila, chceš hrát znovu?');
     }
-    //podmínka pro remízu - nevím jestli je to funkční
+    //podmínka pro remízu - takhle to nejde, nejde dát na tlacitka.classList.contains - je to pole
 
     /* if (tlacitka.classList.contains('tlacitko--kolecko') ||
     tlacitka.classList.contains('tlacitko--krizek')
