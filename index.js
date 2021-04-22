@@ -1,6 +1,7 @@
 'use strict';
 
 let naTahu = 'circle';
+let konecHry = null;
 
 const tlacitka = document.querySelectorAll('button');
 
@@ -8,9 +9,11 @@ const vypisTlacitko = (tlacitko) => {
   tlacitko.addEventListener('click', (event) => {
     const stiskleTlacitko = event.target;
     const ikonaNaTahu = document.querySelector('.ikona-na-tahu');
+
     if (
       tlacitko.classList.contains('tlacitko--kolecko') ||
-      tlacitko.classList.contains('tlacitko--krizek')
+      tlacitko.classList.contains('tlacitko--krizek') ||
+      konecHry
     ) {
       return;
     }
@@ -20,8 +23,8 @@ const vypisTlacitko = (tlacitko) => {
       ikonaNaTahu.src = 'img/cross.svg';
       ikonaNaTahu.alt = 'na tahu krizek';
 
-      vyherniTah(stiskleTlacitko);
       if (vyherniTah(stiskleTlacitko) === true) {
+        konecHry = 'kolecko';
         setTimeout(() => {
           hratZnovu('Vyhrálo kolečko. Hrát znovu?');
         }, 200);
@@ -32,8 +35,8 @@ const vypisTlacitko = (tlacitko) => {
       ikonaNaTahu.src = 'img/circle.svg';
       ikonaNaTahu.alt = 'na tahu kolecko';
 
-      vyherniTah(stiskleTlacitko);
       if (vyherniTah(stiskleTlacitko) === true) {
+        konecHry = 'krizek';
         setTimeout(() => {
           hratZnovu('Vyhrál křížek. Hrát znovu?');
         }, 200);
@@ -136,20 +139,75 @@ const vyherniTah = (tlacitko) => {
   if (veSloupci >= pocetVyhernichSymbolu) {
     return true;
   }
+
+  //diagonály
+  //doleva nahoru
+  let vDiagonaleLevaHorni = 1;
+  a = vychoziPozice.radek;
+  i = vychoziPozice.sloupec;
+
+  while (
+    a > 0 &&
+    i > 0 &&
+    symbol === ziskejSymbol(ziskejTlacitko(a - 1, i - 1))
+  ) {
+    vDiagonaleLevaHorni++;
+    a--;
+    i--;
+  }
+  // doprava dolu
+  a = vychoziPozice.radek;
+  i = vychoziPozice.sloupec;
+
+  while (
+    a < herniPlocha - 1 &&
+    i < herniPlocha - 1 &&
+    symbol === ziskejSymbol(ziskejTlacitko(a + 1, i + 1))
+  ) {
+    vDiagonaleLevaHorni++;
+    a++;
+    i++;
+  }
+  if (vDiagonaleLevaHorni >= pocetVyhernichSymbolu) {
+    return true;
+  }
+
+  // doprava nahoru
+  let vDiagonalePravaHorni = 1;
+  a = vychoziPozice.radek;
+  i = vychoziPozice.sloupec;
+
+  while (
+    a > 0 &&
+    i < herniPlocha - 1 &&
+    symbol == ziskejSymbol(ziskejTlacitko(a - 1, i + 1))
+  ) {
+    vDiagonalePravaHorni++;
+    a--;
+    i++;
+  }
+
+  //doleva dolu
+  a = vychoziPozice.radek;
+  i = vychoziPozice.sloupec;
+  while (
+    a < herniPlocha - 1 &&
+    i > 0 &&
+    symbol === ziskejSymbol(ziskejTlacitko(a + 1, i - 1))
+  ) {
+    vDiagonalePravaHorni++;
+    a++;
+    i--;
+  }
+  if (vDiagonalePravaHorni >= pocetVyhernichSymbolu) {
+    return true;
+  }
+
   return false;
 };
-
-//diagonály
-//doleva nahoru
-// let vDiagonale = 1;
-// i = vychoziPozice.sloupec;
-// a = vychoziPozice.radek;
-// while (i > 0 && symbol === ziskejSymbol(ziskejTlacitko()))
 //spuštění nové hry
-
 const hratZnovu = (zprava) => {
   if (confirm(zprava) === true) {
     location.reload();
   }
-  // return tlacitka.setAttribute('disabled', ''); nefunguje
 };
