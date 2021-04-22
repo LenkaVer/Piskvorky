@@ -52,6 +52,11 @@ const vypisTlacitko = (tlacitko) => {
         }, 200);
       }
     }
+    //remíza
+    if (kontrolaRemizy() === true) {
+      return hratZnovu('Remíza, už nelze vyhrát. Chceš hrát znovu?');
+    }
+
     tlacitko.setAttribute('disabled', '');
   });
 };
@@ -220,4 +225,150 @@ const hratZnovu = (zprava) => {
   if (confirm(zprava) === true) {
     location.reload();
   }
+};
+
+const kontrolaRemizy = () => {
+  let tlacitko;
+  for (let x = 0; x < tlacitka.length; x++) {
+    tlacitko = tlacitka[x];
+
+    const vychoziPozice = ziskejPozici(tlacitko);
+    const symbol = ziskejSymbol(tlacitko);
+
+    let i;
+    let a;
+    let vRadku = 1; // Jednička pro právě vybrané políčko
+
+    // Koukni doleva
+    i = vychoziPozice.sloupec;
+    while (
+      i > 0 &&
+      (symbol === ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i - 1)) ||
+        (ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i - 1)) !==
+          'circle' &&
+          ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i - 1)) !== 'cross'))
+    ) {
+      vRadku++;
+      i--;
+    }
+
+    // Koukni doprava
+    i = vychoziPozice.sloupec;
+    while (
+      i < herniPlocha - 1 &&
+      (symbol === ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i + 1)) ||
+        (ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i + 1)) !==
+          'circle' &&
+          ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i + 1)) !== 'cross'))
+    ) {
+      vRadku++;
+      i++;
+    }
+    if (vRadku >= pocetVyhernichSymbolu) {
+      return false;
+    }
+
+    //Koukni nahoru
+    let veSloupci = 1;
+    i = vychoziPozice.radek;
+    while (
+      i > 0 &&
+      (symbol === ziskejSymbol(ziskejTlacitko(i - 1, vychoziPozice.sloupec)) ||
+        (ziskejSymbol(ziskejTlacitko(i - 1, vychoziPozice.sloupec)) !==
+          'circle' &&
+          ziskejSymbol(ziskejTlacitko(i - 1, vychoziPozice.sloupec)) !==
+            'cross'))
+    ) {
+      veSloupci++;
+      i--;
+    }
+    //Koukni dolu
+    i = vychoziPozice.radek;
+    while (
+      i < herniPlocha - 1 &&
+      (symbol === ziskejSymbol(ziskejTlacitko(i + 1, vychoziPozice.sloupec)) ||
+        (ziskejSymbol(ziskejTlacitko(i + 1, vychoziPozice.sloupec)) !==
+          'circle' &&
+          ziskejSymbol(ziskejTlacitko(i + 1, vychoziPozice.sloupec)) !==
+            'cross'))
+    ) {
+      veSloupci++;
+      i++;
+    }
+    if (veSloupci >= pocetVyhernichSymbolu) {
+      return false;
+    }
+
+    //diagonály
+    //doleva nahoru
+    let vDiagonaleLevaHorni = 1;
+    a = vychoziPozice.radek;
+    i = vychoziPozice.sloupec;
+
+    while (
+      a > 0 &&
+      i > 0 &&
+      (symbol === ziskejSymbol(ziskejTlacitko(a - 1, i - 1)) ||
+        (ziskejSymbol(ziskejTlacitko(a - 1, i - 1)) !== 'circle' &&
+          ziskejSymbol(ziskejTlacitko(a - 1, i - 1)) !== 'cross'))
+    ) {
+      vDiagonaleLevaHorni++;
+      a--;
+      i--;
+    }
+    // doprava dolu
+    a = vychoziPozice.radek;
+    i = vychoziPozice.sloupec;
+
+    while (
+      a < herniPlocha - 1 &&
+      i < herniPlocha - 1 &&
+      (symbol === ziskejSymbol(ziskejTlacitko(a + 1, i + 1)) ||
+        (ziskejSymbol(ziskejTlacitko(a + 1, i + 1)) !== 'circle' &&
+          ziskejSymbol(ziskejTlacitko(a + 1, i + 1)) !== 'cross'))
+    ) {
+      vDiagonaleLevaHorni++;
+      a++;
+      i++;
+    }
+    if (vDiagonaleLevaHorni >= pocetVyhernichSymbolu) {
+      return false;
+    }
+
+    // doprava nahoru
+    let vDiagonalePravaHorni = 1;
+    a = vychoziPozice.radek;
+    i = vychoziPozice.sloupec;
+
+    while (
+      a > 0 &&
+      i < herniPlocha - 1 &&
+      (symbol == ziskejSymbol(ziskejTlacitko(a - 1, i + 1)) ||
+        (ziskejSymbol(ziskejTlacitko(a - 1, i + 1)) !== 'circle' &&
+          ziskejSymbol(ziskejTlacitko(a - 1, i + 1)) !== 'cross'))
+    ) {
+      vDiagonalePravaHorni++;
+      a--;
+      i++;
+    }
+
+    //doleva dolu
+    a = vychoziPozice.radek;
+    i = vychoziPozice.sloupec;
+    while (
+      a < herniPlocha - 1 &&
+      i > 0 &&
+      (symbol === ziskejSymbol(ziskejTlacitko(a + 1, i - 1)) ||
+        (ziskejSymbol(ziskejTlacitko(a + 1, i - 1)) !== 'circle' &&
+          ziskejSymbol(ziskejTlacitko(a + 1, i - 1)) !== 'cross'))
+    ) {
+      vDiagonalePravaHorni++;
+      a++;
+      i--;
+    }
+    if (vDiagonalePravaHorni >= pocetVyhernichSymbolu) {
+      return false;
+    }
+  }
+  return true;
 };
