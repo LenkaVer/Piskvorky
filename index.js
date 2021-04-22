@@ -5,7 +5,8 @@ let naTahu = 'circle';
 const tlacitka = document.querySelectorAll('button');
 
 const vypisTlacitko = (tlacitko) => {
-  tlacitko.addEventListener('click', () => {
+  tlacitko.addEventListener('click', (event) => {
+    const stiskleTlacitko = event.target;
     const ikonaNaTahu = document.querySelector('.ikona-na-tahu');
     if (
       tlacitko.classList.contains('tlacitko--kolecko') ||
@@ -18,11 +19,25 @@ const vypisTlacitko = (tlacitko) => {
       naTahu = 'cross';
       ikonaNaTahu.src = 'img/cross.svg';
       ikonaNaTahu.alt = 'na tahu krizek';
+
+      vyherniTah(stiskleTlacitko);
+      if (vyherniTah(stiskleTlacitko) === true) {
+        setTimeout(() => {
+          hratZnovu('Vyhrálo kolečko. Hrát znovu?');
+        }, 200);
+      }
     } else {
       tlacitko.classList.add('tlacitko--krizek');
       naTahu = 'circle';
       ikonaNaTahu.src = 'img/circle.svg';
       ikonaNaTahu.alt = 'na tahu kolecko';
+
+      vyherniTah(stiskleTlacitko);
+      if (vyherniTah(stiskleTlacitko) === true) {
+        setTimeout(() => {
+          hratZnovu('Vyhrál křížek. Hrát znovu?');
+        }, 200);
+      }
     }
     tlacitko.setAttribute('disabled', '');
   });
@@ -73,6 +88,7 @@ const vyherniTah = (tlacitko) => {
   const symbol = ziskejSymbol(tlacitko);
 
   let i;
+  let a;
   let vRadku = 1; // Jednička pro právě vybrané políčko
 
   // Koukni doleva
@@ -121,4 +137,19 @@ const vyherniTah = (tlacitko) => {
     return true;
   }
   return false;
+};
+
+//diagonály
+//doleva nahoru
+// let vDiagonale = 1;
+// i = vychoziPozice.sloupec;
+// a = vychoziPozice.radek;
+// while (i > 0 && symbol === ziskejSymbol(ziskejTlacitko()))
+//spuštění nové hry
+
+const hratZnovu = (zprava) => {
+  if (confirm(zprava) === true) {
+    location.reload();
+  }
+  // return tlacitka.setAttribute('disabled', ''); nefunguje
 };
