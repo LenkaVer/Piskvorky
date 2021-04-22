@@ -6,28 +6,34 @@ let konecHry = null;
 const tlacitka = document.querySelectorAll('button');
 
 const vypisTlacitko = (tlacitko) => {
-  tlacitko.addEventListener('click', (event) => {
-    const stiskleTlacitko = event.target;
+  tlacitko.addEventListener('click', () => {
     const ikonaNaTahu = document.querySelector('.ikona-na-tahu');
 
     if (
       tlacitko.classList.contains('tlacitko--kolecko') ||
       tlacitko.classList.contains('tlacitko--krizek') //||
-      //konecHry varianta bez podmínky s alertem - pouze nebude na buttons přidávat kolečko/křížek
+      //konecHry  ---varianta bez podmínky s alertem - pouze nebude na buttons přidávat kolečko/křížek
     ) {
       return;
     }
 
     if (konecHry === 'kolecko' || konecHry === 'krizek') {
-      return alert('Nezkoušej podvádět!');
+      return alert('Hra skončila. Nezkoušej podvádět!');
     }
+    //podmínka pro remízu - nevím jestli je to funkční
+
+    /* if (tlacitka.classList.contains('tlacitko--kolecko') ||
+    tlacitka.classList.contains('tlacitko--krizek')
+    return hratZnovu('Hra skončila remízou. Chceš to zkusit znovu?')
+    */
+
     if (naTahu === 'circle') {
       tlacitko.classList.add('tlacitko--kolecko');
       naTahu = 'cross';
       ikonaNaTahu.src = 'img/cross.svg';
       ikonaNaTahu.alt = 'na tahu krizek';
 
-      if (vyherniTah(stiskleTlacitko) === true) {
+      if (vyherniTah(tlacitko) === true) {
         konecHry = 'kolecko';
         setTimeout(() => {
           hratZnovu('Vyhrálo kolečko. Hrát znovu?');
@@ -39,7 +45,7 @@ const vypisTlacitko = (tlacitko) => {
       ikonaNaTahu.src = 'img/circle.svg';
       ikonaNaTahu.alt = 'na tahu kolecko';
 
-      if (vyherniTah(stiskleTlacitko) === true) {
+      if (vyherniTah(tlacitko) === true) {
         konecHry = 'krizek';
         setTimeout(() => {
           hratZnovu('Vyhrál křížek. Hrát znovu?');
