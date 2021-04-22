@@ -12,10 +12,14 @@ const vypisTlacitko = (tlacitko) => {
 
     if (
       tlacitko.classList.contains('tlacitko--kolecko') ||
-      tlacitko.classList.contains('tlacitko--krizek') ||
-      konecHry
+      tlacitko.classList.contains('tlacitko--krizek') //||
+      //konecHry varianta bez podmínky s alertem - pouze nebude na buttons přidávat kolečko/křížek
     ) {
       return;
+    }
+
+    if (konecHry === 'kolecko' || konecHry === 'krizek') {
+      return alert('Nezkoušej podvádět!');
     }
     if (naTahu === 'circle') {
       tlacitko.classList.add('tlacitko--kolecko');
