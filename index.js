@@ -227,6 +227,7 @@ const hratZnovu = (zprava) => {
   }
 };
 
+//remíza
 const kontrolaRemizy = () => {
   let tlacitko;
   for (let x = 0; x < tlacitka.length; x++) {
@@ -244,9 +245,7 @@ const kontrolaRemizy = () => {
     while (
       i > 0 &&
       (symbol === ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i - 1)) ||
-        (ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i - 1)) !==
-          'circle' &&
-          ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i - 1)) !== 'cross'))
+        ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i - 1)) === undefined)
     ) {
       vRadku++;
       i--;
@@ -257,9 +256,7 @@ const kontrolaRemizy = () => {
     while (
       i < herniPlocha - 1 &&
       (symbol === ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i + 1)) ||
-        (ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i + 1)) !==
-          'circle' &&
-          ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i + 1)) !== 'cross'))
+        ziskejSymbol(ziskejTlacitko(vychoziPozice.radek, i + 1)) === undefined)
     ) {
       vRadku++;
       i++;
@@ -274,10 +271,8 @@ const kontrolaRemizy = () => {
     while (
       i > 0 &&
       (symbol === ziskejSymbol(ziskejTlacitko(i - 1, vychoziPozice.sloupec)) ||
-        (ziskejSymbol(ziskejTlacitko(i - 1, vychoziPozice.sloupec)) !==
-          'circle' &&
-          ziskejSymbol(ziskejTlacitko(i - 1, vychoziPozice.sloupec)) !==
-            'cross'))
+        ziskejSymbol(ziskejTlacitko(i - 1, vychoziPozice.sloupec)) ===
+          undefined)
     ) {
       veSloupci++;
       i--;
@@ -287,10 +282,8 @@ const kontrolaRemizy = () => {
     while (
       i < herniPlocha - 1 &&
       (symbol === ziskejSymbol(ziskejTlacitko(i + 1, vychoziPozice.sloupec)) ||
-        (ziskejSymbol(ziskejTlacitko(i + 1, vychoziPozice.sloupec)) !==
-          'circle' &&
-          ziskejSymbol(ziskejTlacitko(i + 1, vychoziPozice.sloupec)) !==
-            'cross'))
+        ziskejSymbol(ziskejTlacitko(i + 1, vychoziPozice.sloupec)) ===
+          undefined)
     ) {
       veSloupci++;
       i++;
@@ -309,8 +302,7 @@ const kontrolaRemizy = () => {
       a > 0 &&
       i > 0 &&
       (symbol === ziskejSymbol(ziskejTlacitko(a - 1, i - 1)) ||
-        (ziskejSymbol(ziskejTlacitko(a - 1, i - 1)) !== 'circle' &&
-          ziskejSymbol(ziskejTlacitko(a - 1, i - 1)) !== 'cross'))
+        ziskejSymbol(ziskejTlacitko(a - 1, i - 1)) === undefined)
     ) {
       vDiagonaleLevaHorni++;
       a--;
@@ -324,8 +316,7 @@ const kontrolaRemizy = () => {
       a < herniPlocha - 1 &&
       i < herniPlocha - 1 &&
       (symbol === ziskejSymbol(ziskejTlacitko(a + 1, i + 1)) ||
-        (ziskejSymbol(ziskejTlacitko(a + 1, i + 1)) !== 'circle' &&
-          ziskejSymbol(ziskejTlacitko(a + 1, i + 1)) !== 'cross'))
+        ziskejSymbol(ziskejTlacitko(a + 1, i + 1)) === undefined)
     ) {
       vDiagonaleLevaHorni++;
       a++;
@@ -344,8 +335,7 @@ const kontrolaRemizy = () => {
       a > 0 &&
       i < herniPlocha - 1 &&
       (symbol == ziskejSymbol(ziskejTlacitko(a - 1, i + 1)) ||
-        (ziskejSymbol(ziskejTlacitko(a - 1, i + 1)) !== 'circle' &&
-          ziskejSymbol(ziskejTlacitko(a - 1, i + 1)) !== 'cross'))
+        ziskejSymbol(ziskejTlacitko(a - 1, i + 1)) === undefined)
     ) {
       vDiagonalePravaHorni++;
       a--;
@@ -359,8 +349,7 @@ const kontrolaRemizy = () => {
       a < herniPlocha - 1 &&
       i > 0 &&
       (symbol === ziskejSymbol(ziskejTlacitko(a + 1, i - 1)) ||
-        (ziskejSymbol(ziskejTlacitko(a + 1, i - 1)) !== 'circle' &&
-          ziskejSymbol(ziskejTlacitko(a + 1, i - 1)) !== 'cross'))
+        ziskejSymbol(ziskejTlacitko(a + 1, i - 1)) === undefined)
     ) {
       vDiagonalePravaHorni++;
       a++;
@@ -372,3 +361,12 @@ const kontrolaRemizy = () => {
   }
   return true;
 };
+
+/*poznámky - úpravy/varianty
+
+ kontrola jestli má třídu
+if (prvek.classList.length === 0) {
+  console.log('prvek nemá žádnou třídu')
+}
+
+Na test, jestli je políčko neobsazené lze využít i funkci ziskejSymbol. Částečně i na to byla zamýšlená. if (ziskejSymbol(policko) === undefined) { // prázdné políčko // } */
